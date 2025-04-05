@@ -22,11 +22,18 @@ namespace AuthService.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("admin-zone")]
+        public IActionResult AdminZone()
         {
-            var user = await context.Users.ToListAsync();
-            return Ok(new { response = user });
+            return Ok(new { response = "You are Admin" });
+        }
+
+
+        [Authorize(Roles = "User")]
+        [HttpGet("user-zone")]
+        public IActionResult UserZone()
+        {
+            return Ok(new { response = "You are User" });
         }
     }
 }
