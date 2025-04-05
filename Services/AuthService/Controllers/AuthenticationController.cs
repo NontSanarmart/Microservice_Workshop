@@ -65,10 +65,8 @@ namespace AuthService.Controllers
                 return Unauthorized(new { message = "รหัสผ่านไม่ถูกต้อง" });
 
             var token = CreateToken(user);
-            return Ok(new { response = token });
-
+            return Ok(new { token = token });
         }
-
 
         private bool VerifyPassword(string password, byte[] hash, byte[] salt)
         {
