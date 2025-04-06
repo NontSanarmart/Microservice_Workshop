@@ -14,20 +14,12 @@ namespace AuthService.Controllers
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly DataContext context;
-
-        public UsersController(DataContext _context)
-        {
-            context = _context;
-        }
-
         [Authorize(Roles = "Admin")]
         [HttpGet("admin-zone")]
         public IActionResult AdminZone()
         {
             return Ok(new { response = "You are Admin" });
         }
-
 
         [Authorize(Roles = "User")]
         [HttpGet("user-zone")]
